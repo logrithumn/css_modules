@@ -1,0 +1,89 @@
+px_scroller = 17px
+break_point_extra_large = 1690px
+break_point_large = 1297px
+break_point_medium = 977px
+break_point_small = 768px
+break_point_extra_small = 480px
+
+media(size)
+  if size == 'xl' //extra large
+    max_width = break_point_extra_large
+  if size == 'l' //large
+    max_width = break_point_large
+  if size == 'm' //medium
+    max_width = break_point_medium
+  if size == 's' //small
+    max_width = break_point_small
+  if size == 'xs' //extra small
+    max_width = break_point_extra_small
+  if size == 'r' //retina
+    min_width = 0
+  if max_width != 0
+    @media screen and (max-width : max_width)
+      {block}
+  if min_width == 0
+    @media (-webkit-min-device-pixel-ratio:1.5),
+          (min--moz-device-pixel-ratio:1.5),
+          (-o-min-device-pixel-ratio:3/2),
+          (min-resolution:1.5dppx)
+      {block}
+
+.clearfix
+  &:after
+    visibility hidden
+    display block
+    font-size 0
+    content ' '
+    clear both
+    height 0
+
+.pull
+  &--right
+    float right
+  &--left
+    float left
+
+.hidden
+  display none
+  &--children > *
+    display none
+
+.text
+  &--left
+    text-align left
+  &--center
+    text-align center
+  &--right
+    text-align right
+  &--lowercase
+    text-transform lowercase
+  &--uppercase
+    text-transform uppercase
+
+.display
+  &--b
+    display block
+  &--i
+    display inline
+  &--i-b
+    display inline-block
+
+.position
+  &--abs
+    position absolute
+  &--rel
+    position relative
+
+body.border-box
+  & *
+    box-sizing border-box
+
+.border-box
+  box-sizing border-box
+
+.center
+  margin-right auto
+  margin-left auto
+  &-h
+    left 50%
+    transform translateX(-50%)
